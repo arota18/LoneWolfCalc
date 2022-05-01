@@ -4,4 +4,113 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"/>
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/txtCombat"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:autofillHints="@string/lblCombat"
+        android:ems="10"
+        android:hint="@string/lblCombat"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toStartOf="@+id/btnAddCombat"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnSubCombat"
+        app:layout_constraintTop_toBottomOf="@+id/lblCombat" />
+
+    <TextView
+        android:id="@+id/lblCombat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/lblCombat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEndurance" />
+
+    <Button
+        android:id="@+id/btnSubCombat"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#F44336"
+        android:onClick="subCombat"
+        android:text="@string/subString"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtCombat"
+        app:layout_constraintEnd_toStartOf="@+id/txtCombat"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnAddCombat"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#4CAF50"
+        android:onClick="addCombat"
+        android:text="@string/addString"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtCombat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/txtCombat" />
+
+    <TextView
+        android:id="@+id/lblResistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/lblResistance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txtEndurance"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:autofillHints="@string/lblResistance"
+        android:ems="10"
+        android:hint="@string/lblResistance"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toStartOf="@+id/btnAddEndurance"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnSubResistance"
+        app:layout_constraintTop_toBottomOf="@+id/lblResistance" />
+
+    <Button
+        android:id="@+id/btnSubResistance"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#F44336"
+        android:onClick="subEndurance"
+        android:text="@string/subString"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtEndurance"
+        app:layout_constraintEnd_toStartOf="@+id/txtEndurance"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnAddEndurance"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#4CAF50"
+        android:onClick="addEndurance"
+        android:text="@string/addString"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtEndurance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/txtEndurance" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

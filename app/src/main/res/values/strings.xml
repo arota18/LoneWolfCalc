@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">LoneWolfCalculator</string>
+    <string name="addString">+</string>
+    <string name="subString">-</string>
+    <string name="lblResistance">Resistenza</string>
+    <string name="lblCombat">Combattività</string>
 </resources>
