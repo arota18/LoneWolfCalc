@@ -4,4 +4,5 @@
     <string name="subString">-</string>
     <string name="lblResistance">Resistenza</string>
     <string name="lblCombat">Combattività</string>
+    <string name="btnFight">Scontro</string>
 </resources>
