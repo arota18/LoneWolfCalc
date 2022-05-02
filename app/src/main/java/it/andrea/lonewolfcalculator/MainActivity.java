@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void toFight(View v) {
         EditText etEndurance = findViewById(R.id.txtEndurance);
-        EditText etCombat = findViewById(R.id.txtEndurance);
+        EditText etCombat = findViewById(R.id.txtCombat);
         try {
             int enduranceValue = Integer.parseInt(etEndurance.getText().toString());
             int combatValue = Integer.parseInt(etCombat.getText().toString());
