@@ -2,12 +2,11 @@ package it.andrea.lonewolfcalculator;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 public class FightActivity extends TwoCounterActivity {
 
-    private int lwEndurance, lwCombat, enEndurance, combatRateo;
+    private int lwEndurance, lwCombat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +24,10 @@ public class FightActivity extends TwoCounterActivity {
     // buttons handlings
 
     public void startFight(View v) {
-        enEndurance = Integer.parseInt(etEndurance.getText().toString());
+        int enEndurance = Integer.parseInt(etEndurance.getText().toString());
         int enCombat = Integer.parseInt(etCombat.getText().toString());
         if (enEndurance > 0 && enCombat > 0) {
-            combatRateo = lwCombat - enCombat;
-            ((TextView) findViewById(R.id.textView3)).setText(fullCombat());
+            ((TextView) findViewById(R.id.textView3)).setText(fullCombat(enEndurance, (lwCombat - enCombat)));
         }
     }
 
@@ -49,42 +47,38 @@ public class FightActivity extends TwoCounterActivity {
         this.editTxtValue(v, 4);
     }
 
-    private String fullCombat() {
-        return fullCombat("", 0);
+    private String fullCombat(int enEndurance, int delta) {
+        String result = "";
+        int i = 0;
+        do {
+            i++;
+            final int rollValue = LWUtils.roll();
+            int lwDmg = lwReceivedDmg(rollValue, delta);
+            lwEndurance -= lwDmg;
+            int enDmg = enReceivedDmg(rollValue, delta);
+            enEndurance -= enDmg;
+        } while (lwEndurance > 0 && enEndurance > 0);
+        if (lwEndurance > 0) return "lw win"; //TODO: wip
+        return "lw died";
     }
 
-    private String fullCombat(String s, int i) {
-        i++;
-        final int roll = dice10();
-        lwEndurance -= lwReceivedDmg(roll);
-        enEndurance -= enReceivedDmg(roll);
-        // todo: exit condition, just for testing
-        if (lwEndurance < 1 || enEndurance < 1) return i + " round, " + s;
-        return fullCombat(s, i);
-    }
-
-    private static int dice10() {
-        // min + random*(max - min + 1)
-        return (int) Math.floor(1 + Math.random() * 10);
-    }
-
-    private int lwReceivedDmg(int roll) {
+    private int lwReceivedDmg(int roll, int delta) {
         switch (roll) {
             case 0:
                 return 0;
             case 1:
-                if (combatRateo > 8) return 3;
-                else if (combatRateo > 2) return 4;
-                else if (combatRateo > -3) return 5;
-                else if (combatRateo > -7) return 6;
-                else if (combatRateo > -9) return 8;
+                if (delta > 8) return 3;
+                else if (delta > 2) return 4;
+                else if (delta > -3) return 5;
+                else if (delta > -7) return 6;
+                else if (delta > -9) return 8;
                 else return lwEndurance;
         }
         // todo: switch from LW table
         return -1;
     }
 
-    private int enReceivedDmg(int roll) {
+    private int enReceivedDmg(int roll, int delta) {
         // todo: switch from LW table
         return -1;
     }
