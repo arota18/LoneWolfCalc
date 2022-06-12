@@ -15,6 +15,12 @@ public class MainActivity extends TwoCounterActivity {
         setContentView(R.layout.activity_main);
         etEndurance = findViewById(R.id.txtEndurance);
         etCombat = findViewById(R.id.txtCombat);
+        // TODO:
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            etEndurance.setText(String.valueOf(extras.getInt(EXT_ENDURANCE)));
+            etCombat.setText(String.valueOf(extras.getInt(MainActivity.EXT_COMBAT)));
+        }
     }
 
     // buttons handlings
